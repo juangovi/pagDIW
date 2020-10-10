@@ -2,6 +2,13 @@
 <html>
 <head>
 <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+<?php
+if(isset($_POST["nick"])){
+    include ("comprobar.php");
+    $lol=comnick($_POST);
+    echo $lol;
+}
+?>
 </head>
 <body>
 <div class="container h-100vh">
@@ -14,18 +21,18 @@
 				<div class="card-body">
 					<form id="xd" method="post" action="">
                     <div class="form-group">
-							<label for="email">nick</label>
-							<input type="text" class="form-control" id="email" required placeholder="Enter email">
+							<label for="nick">nick</label>
+							<input type="text" class="form-control" name="nick" id="nick" required placeholder="nombre de usuario">
 						</div>
 
 						<div class="form-group">
-							<label for="email">Email address</label>
-							<input type="email" class="form-control" id="email" required placeholder="Enter email">
+							<label for="email">Email</label>
+							<input type="email" class="form-control" id="email" required placeholder="email">
                         </div>
 
                         <div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" class="form-control" id="password" required placeholder="Password">
+							<label for="password">contraseña</label>
+							<input type="password" class="form-control" id="password" required placeholder="contraseña">
 							
                         </div>
                         
