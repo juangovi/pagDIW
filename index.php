@@ -47,15 +47,18 @@ if(isset($_POST["nick"])){
 							
                         </div>
                         <p id="mensaje" style="color: #fa0505">
-                           
+                        
                         </p>
                         <button type="button" id="boton" class="btn btn-primary btn-lg btn-block" onclick="comprobar()">registrar</button>
                         <?php 
+                        $correcto=0;
                             if($erroremail+$errornick==0){
                                 include ("insertar.php");
-                                insertar($_POST);
+                                
+                               $correcto=insertar($_POST);
                             }
                         ?>
+                        
                        
                         <script>
                             
@@ -77,6 +80,36 @@ if(isset($_POST["nick"])){
 		</div>
 	</div>
 </div>
+<div class="w3-container">
 
+ 
+
+  <div id="id01" class="w3-modal w3-animate-opacity" style="display: none;">
+  <?php 
+                            if($correcto==1){
+                                echo "<script>
+      
+                                document.getElementById('id01').style.display='block';
+                           </script>";
+                               
+                            }
+                        ?>
+  
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2>gracias por registrarte</h2>
+      </header>
+      <div class="w3-container">
+        <p>se le ha enviado un correo de verificacion a su cuenta de correo</p>
+        <p>verifique su cuenta y vuelva a iniciar sesion</p>
+      </div>
+      <footer class="w3-container w3-teal">
+        <p>Modal Footer</p>
+      </footer>
+    </div>
+  </div>
+</div>
 </body>
 </html>

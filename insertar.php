@@ -6,13 +6,15 @@
         $contraseña=md5($datos["contraseña"]);
         $hoy = date("m.d.y");
         $token=md5($nick.$hoy.$email);
-       
+       $correcto=0;
        $sql = "INSERT INTO  usuarios (Usuario_nick,Usuario_email,Usuario_clave,Usuario_token_aleatorio) 
        VALUES ('$nick','$email','$contraseña','$token')";
        if (mysqli_query($conn, $sql)) {
        enviocorreo($email, $token);
+        $correcto=1;
        
        }
+       return $correcto;
     }
     function enviocorreo($email,$token){
         $headers="";
