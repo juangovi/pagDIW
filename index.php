@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+
 <?php
+$errornick=100;
+$erroremail=100;
 if(isset($_POST["nick"])){
     include ("comprobar.php");
-    $lol=comnick($_POST);
-    echo $lol;
+    $errornick=comnick($_POST);
+    $erroremail=comemail($_POST);
 }
 ?>
 </head>
@@ -21,18 +26,18 @@ if(isset($_POST["nick"])){
 				<div class="card-body">
 					<form id="xd" method="post" action="">
                     <div class="form-group">
-							<label for="nick">nick</label>
+							<label for="nick">nick</label><?php if ($errornick==1) {echo "<spam style='color: red'> *este nick ya exise</spam>";}?>
 							<input type="text" class="form-control" name="nick" id="nick" required placeholder="nombre de usuario">
 						</div>
 
 						<div class="form-group">
-							<label for="email">Email</label>
-							<input type="email" class="form-control" id="email" required placeholder="email">
+							<label for="email">Email</label><?php if ($erroremail==1) {echo "<spam style='color: red'> *este email ya esta en uso</spam>";}?>
+							<input type="email" class="form-control" name="email" id="email" required placeholder="email">
                         </div>
 
                         <div class="form-group">
 							<label for="password">contraseña</label>
-							<input type="password" class="form-control" id="password" required placeholder="contraseña">
+							<input type="password" class="form-control" name="contraseña" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="necesita al menos una letra minuscula y mayuscula un numero y 8 caracteres" required placeholder="contraseña">
 							
                         </div>
                         
@@ -45,7 +50,15 @@ if(isset($_POST["nick"])){
                            
                         </p>
                         <button type="button" id="boton" class="btn btn-primary btn-lg btn-block" onclick="comprobar()">registrar</button>
+                        <?php 
+                            if($erroremail+$errornick==0){
+                                include ("insertar.php");
+                                insertar($_POST);
+                            }
+                        ?>
+                       
                         <script>
+                            
                             function comprobar(){
                             var con1=document.getElementById("password").value;
                             var con2=document.getElementById("conpassword").value;
@@ -64,5 +77,6 @@ if(isset($_POST["nick"])){
 		</div>
 	</div>
 </div>
+
 </body>
 </html>

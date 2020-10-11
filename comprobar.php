@@ -12,4 +12,15 @@ function comnick($datos){
         }
     return $res;
 }
+function comemail($datos){
+    
+    $conn=conectar();
+    $sql = "SELECT Usuario_nick FROM usuarios WHERE Usuario_nick LIKE '".$datos["email"]."'";
+    $result = $conn->query($sql);
+    $res=0;
+        if ($result->num_rows > 0) {
+            $res=1;
+        }
+    return $res;
+}
 ?>
