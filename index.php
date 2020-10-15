@@ -24,7 +24,7 @@ if(isset($_POST["nick"])){
 					registro
 				</div>
 				<div class="card-body">
-					<form id="xd" method="post" action="">
+					<form id="for" method="post" action="">
                     <div class="form-group">
 							<label for="nick">nick</label><?php if ($errornick==1) {echo "<spam style='color: red'> *este nick ya exise</spam>";}?>
 							<input type="text" class="form-control" name="nick" id="nick" required placeholder="nombre de usuario">
