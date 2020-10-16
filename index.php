@@ -97,8 +97,6 @@ if(isset($_POST["nick"])){
   
     <div class="w3-modal-content w3-card-4">
       <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id01').style.display='none'" 
-        class="w3-button w3-large w3-display-topright">&times;</span>
         <h2>gracias por registrarte</h2>
       </header>
       <div class="w3-container">
@@ -106,7 +104,9 @@ if(isset($_POST["nick"])){
         <p>verifique su cuenta y vuelva a iniciar sesion</p>
       </div>
       <footer class="w3-container w3-teal">
-        <p>Modal Footer</p>
+      <form method="get" action="login.php">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+        </form>
       </footer>
     </div>
   </div>

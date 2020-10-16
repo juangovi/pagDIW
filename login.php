@@ -29,7 +29,7 @@ session_start();
         					</script>
 							<?php
 						}
-                    }
+                    
    
 
                     ?>
@@ -47,7 +47,7 @@ session_start();
                         </div>
                         <p id="mensaje" style="color: #fa0505">
                         <?php
-						if($res<2){echo "datos incorrecto";}
+						if($res<2){echo "datos incorrecto";}}
 						?>
                         </p>
                         <button type="submit" id="boton" class="btn btn-primary btn-lg btn-block" onclick="">registrar</button>
