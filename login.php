@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +16,23 @@
 				<div class="card-header text-center display-4">
 					iniciar sesion
 				</div>
+				<?php
+                    
+                    if(isset($_POST["nick"])){
+                        include ("iniciar.php");
+                        $res=comprobarnick($_POST);
+                        if($res==3){
+							$_SESSION["user"] = $_POST["nick"];
+							?>
+							<script lang="JavaScript">
+           						 window.location.href = "pag.php";
+        					</script>
+							<?php
+						}
+                    }
+   
+
+                    ?>
 				<div class="card-body">
 					<form id="for" method="post" action="">
                     <div class="form-group">
@@ -25,22 +46,17 @@
 							
                         </div>
                         <p id="mensaje" style="color: #fa0505">
-                        
+                        <?php
+						if($res<2){echo "datos incorrecto";}
+						?>
                         </p>
                         <button type="submit" id="boton" class="btn btn-primary btn-lg btn-block" onclick="">registrar</button>
                     </form>
-                    <?php
-                    
-                    if(isset($_POST["nick"])){
-                        include ("iniciar.php");
-                        $res=comprobarnick($_POST);
-                        echo($res);
-                    }
-   
-
-                    ?>
+                   
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+</body>
+</html>
