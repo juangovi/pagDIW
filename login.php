@@ -17,7 +17,6 @@ session_start();
 					iniciar sesion
 				</div>
 				<?php
-                    
                     if(isset($_POST["nick"])){
                         include ("iniciar.php");
                         $res=comprobarnick($_POST);
@@ -29,12 +28,10 @@ session_start();
         					</script>
 							<?php
 						}
-                    
-   
-
+					}
                     ?>
 				<div class="card-body">
-					<form id="for" method="post" action="">
+					<form id="for" method="post" action="login.php">
                     <div class="form-group">
 							<label for="nick">nick o correo electronico</label>
 							<input type="text" class="form-control" name="nick" id="nick" required placeholder="email/nick">
@@ -45,14 +42,15 @@ session_start();
 							<input type="password" class="form-control" name="contraseña" id="password" title="necesita al menos una letra minuscula y mayuscula un numero y 8 caracteres" required placeholder="contraseña">
 							
                         </div>
+						<a href="index.php">crear cuenta</a>
                         <p id="mensaje" style="color: #fa0505">
-                        <?php
+						<?php
+						if(isset($_POST["nick"])){
 						if($res<2){echo "datos incorrecto";}}
 						?>
                         </p>
                         <button type="submit" id="boton" class="btn btn-primary btn-lg btn-block" onclick="">registrar</button>
                     </form>
-                   
 				</div>
 			</div>
 		</div>

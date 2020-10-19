@@ -46,6 +46,7 @@ if(isset($_POST["nick"])){
 							<input type="password" class="form-control" id="conpassword" required placeholder="Password">
 							
                         </div>
+                        <a href="login.php">¿ya tienes cuenta?</a>
                         <p id="mensaje" style="color: #fa0505">
                         
                         </p>

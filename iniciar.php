@@ -12,7 +12,7 @@ function comprobarnick($datos){
 
               
             $res++;
-            if($row["Usuario_bloqueado"]==0)
+            if($row["Usuario_bloqueado"]==1)
             $res++;
         }
     return $res;

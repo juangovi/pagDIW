@@ -6,7 +6,16 @@ session_start();
 <html>
 <body>
 <?php
-echo $_SESSION["user"];
+if (isset($_SESSION["user"])) {
+    
+}else{
+    ?>
+    <script lang="JavaScript">
+         window.location.href = "login.php";
+    </script>
+    <?php
+}
+echo "hola".$_SESSION["user"];
 ?>
 </body>
 </html>
