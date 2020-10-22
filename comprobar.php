@@ -1,26 +1,28 @@
 
 <?php
-include ("coneccion.php");
-function comnick($datos){
-    
-    $conn=conectar();
-    $sql = "SELECT Usuario_nick FROM usuarios WHERE Usuario_nick LIKE '".$datos["nick"]."'";
+include("coneccion.php");
+function comnick($datos)
+{
+
+    $conn = conectar();
+    $sql = "SELECT Usuario_nick FROM usuarios WHERE Usuario_nick LIKE '" . $datos["nick"] . "'";
     $result = $conn->query($sql);
-    $res=0;
-        if ($result->num_rows > 0) {
-            $res=1;
-        }
+    $res = 0;
+    if ($result->num_rows > 0) {
+        $res = 1;
+    }
     return $res;
 }
-function comemail($datos){
-    
-    $conn=conectar();
-    $sql = "SELECT Usuario_email FROM usuarios WHERE Usuario_email LIKE '".$datos["email"]."'";
+function comemail($datos)
+{
+
+    $conn = conectar();
+    $sql = "SELECT Usuario_email FROM usuarios WHERE Usuario_email LIKE '" . $datos["email"] . "'";
     $result = $conn->query($sql);
-    $res=0;
-        if ($result->num_rows > 0) {
-            $res=1;
-        }
+    $res = 0;
+    if ($result->num_rows > 0) {
+        $res = 1;
+    }
     return $res;
 }
 ?>

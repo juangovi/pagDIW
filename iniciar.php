@@ -33,6 +33,4 @@ function obtenerdatos($datos){
 
         }
     return $row;
-} 
-
-?>
+}
