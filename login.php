@@ -22,6 +22,7 @@ session_start();
                         $res=comprobarnick($_POST);
                         if($res==3){
 							$_SESSION["user"] = $_POST["nick"];
+							$_SESSION["contraseña"] = $_POST["contraseña"];
 							?>
 							<script lang="JavaScript">
            						 window.location.href = "pag.php";
