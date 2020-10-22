@@ -26,7 +26,7 @@ session_start();
     }
     echo "hola " . $datos["Usuario_nick"];
     if ($datos["Usuario_perfil"] == "admin")
-        echo " es administrador de esta estupenda pagina web";
+        echo " es administrador de esta estupenda pagina web 😎🤏";
     ?>
     <form action="" method="post">
         <input type="hidden" name="salir" value="1">

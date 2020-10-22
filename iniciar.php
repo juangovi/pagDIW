@@ -15,7 +15,7 @@ function comprobarnick($datos){
             if($row["Usuario_bloqueado"]==1&&$res==2)
             $res=3;
         }
-    return $res;
+    return $res;//1=usuario correcto 2=usuario y contraseña correcto 3=todo correcto
 }
 function comprobarcon($contraseña1,$contraseña2){
     $res=0;
