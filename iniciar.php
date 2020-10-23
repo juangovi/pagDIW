@@ -34,3 +34,18 @@ function obtenerdatos($datos){
         }
     return $row;
 }
+function bloqueo($datos){
+    $conn=conectar();
+    $sql = "SELECT Usuario_numero_intentos FROM usuarios WHERE Usuario_email LIKE '".$datos["nick"]."' or Usuario_nick LIKE '".$datos["nick"]."'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc(); 
+        if ($row["Usuario_numero_intentos"]<5) {
+            $sql = "UPDATE usuarios SET Usuario_numero_intentos=".($row["Usuario_numero_intentos"]+1)." WHERE Usuario_email LIKE '".$datos["nick"]."' or Usuario_nick LIKE '".$datos["nick"]."'";
+        }else{
+            $sql = "UPDATE usuarios SET Usuario_numero_intentos=0, Usuario_bloqueado=0 WHERE Usuario_email LIKE '".$datos["nick"]."' or Usuario_nick LIKE '".$datos["nick"]."'";
+
+        }
+    }
+}
+

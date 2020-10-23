@@ -31,7 +31,10 @@ session_start();
 								window.location.href = "pag.php";
 							</script>
 					<?php
+						}else if($res==1){
+							//bloqueo($_POST);
 						}
+						
 					}
 					?>
 					<div class="card-body">
