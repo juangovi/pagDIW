@@ -3,7 +3,6 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
   <link rel="stylesheet" href="./style.css">
 
@@ -19,8 +18,8 @@
 </head>
 
 <body>
-  <div class="container h-100vh">
-    <div class="row row h-100 align-items-center justify-content-centerr">
+  <div class="container h-100vh" id="log" style="display: block;">
+    <div class="row row h-100 align-items-center justify-content-centerr" >
       <div class="col align-self-cente ">
         <div class="card">
           <div class="card-header text-center display-4">
@@ -87,36 +86,29 @@
       </div>
     </div>
   </div>
-  <div class="w3-container">
-
-
-
-    <div id="id01" class="w3-modal w3-animate-opacity" style="display: none;">
-      <?php
-      if ($correcto == 1) {
-        echo "<script>
+  <div class="container h-100vh" id="mod" style="display: none;">
+  <?php
+      if ($correcto == 1) {?>
+        <script>
+          document.getElementById('mod').style.display='block';
+          document.getElementById('log').style.display='none';
+        </script>
+  <?php
       
-                                document.getElementById('id01').style.display='block';
-                           </script>";
       }
       ?>
-
-      <div class="w3-modal-content w3-card-4">
-        <header class="w3-container w3-teal">
-          <h2>gracias por registrarte</h2>
-        </header>
-        <div class="w3-container">
-          <p>se le ha enviado un correo de verificacion a su cuenta de correo</p>
-          <p>verifique su cuenta y vuelva a iniciar sesion</p>
-        </div>
-        <footer class="w3-container w3-teal">
-          <form method="get" action="login.php">
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-          </form>
-        </footer>
-      </div>
-    </div>
-  </div>
+    <div class="row row h-100 align-items-center justify-content-centerr">
+      <div class="col align-self-cente ">
+        <div class="card">
+          <div class="card-header text-center display-4">
+            gracias
+          </div>
+          <div class="card-body">
+            <p class="parrafo">se le ha enviado un correo electronico con un link de verificacion
+            antes de poder entrar tendras que ir al correo electronico adjunto y verificar su correo</p>
+            <a href="login.php" id="boton" class="btn btn-primary btn-lg btn-block">Login</a>
+          </div>
+  
 </body>
 
 </html>
