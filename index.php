@@ -52,10 +52,12 @@
                 <input type="password" class="form-control" id="conpassword" required placeholder="Password">
 
               </div>
+              <div>
               <a href="login.php">¿ya tienes cuenta?</a>
-              <p id="mensaje" style="color: #fa0505">
+              <p id="mensaje" style="color: #fa0505; text-align: right; float: right">
 
               </p>
+              </div>
               <button type="button" id="boton" class="btn btn-primary btn-lg btn-block" onclick="comprobar()">registrar</button>
               <?php
               $correcto = 0;
