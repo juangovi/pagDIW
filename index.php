@@ -52,7 +52,7 @@
                 <input type="password" class="form-control" id="conpassword" required placeholder="Password">
 
               </div>
-              <div>
+              <div style="padding-top: 5%;">
               <a href="login.php">¿ya tienes cuenta?</a>
               <p id="mensaje" style="color: #fa0505; text-align: right; float: right">
 
