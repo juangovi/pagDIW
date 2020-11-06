@@ -23,10 +23,10 @@
     
     
     // Check if file already exists
-    if (file_exists($target_file)) {
+    /*if (file_exists($target_file)) {
       echo "Sorry, file already exists.";
       $uploadOk = 0;
-    }
+    }*/
     
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -47,9 +47,9 @@
     // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-        $sql = "UPDATE usuarios SET Usuario_fotografia='".$imagen."' WHERE Usuario_email LIKE '".$usuario."'";
+        $sql = "UPDATE usuarios SET Usuario_fotografia='".$usuario.$imagen."' WHERE Usuario_nick LIKE '".$usuario."'";
         $result = $conn->query($sql);
+        rename("fotosperfil/".$imagen,"fotosperfil/".$usuario.$imagen);
       } else {
         echo "Sorry, there was an error uploading your file.";
       }

@@ -39,16 +39,17 @@ session_start();
     </form>
     <?php
         include("subirfoto.php");
-        $img=obtenerimg($datos["Usuario_nick"]);
-        if($img==null||$img==""){
-            $img="default.jpg";
-        }
-        echo "<img src='fotosperfil/".$img."' alt='f'>";
+        
         if(isset($_POST["aceptar"])){
         
         crearimg($datos["Usuario_nick"]);
         
         }
+        $img=obtenerimg($datos["Usuario_nick"]);
+        if($img==null||$img==""){
+            $img="default.jpg";
+        }
+        echo "<img src='fotosperfil/".$img."' alt='f'>";
     ?>
 </body>
 
