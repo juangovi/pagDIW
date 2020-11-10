@@ -27,6 +27,7 @@ session_start();
 						if ($res == 3) {
 							$_SESSION["user"] = $_POST["nick"];
 							$_SESSION["contraseña"] = $_POST["contraseña"];
+							setcookie("user", "", time() - 3600);
 					?>
 							<script lang="JavaScript">
 								window.location.href = "pag.php";

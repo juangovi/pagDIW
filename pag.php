@@ -1,6 +1,7 @@
 <?php
 // Start the session
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,8 +16,14 @@ session_start();
         // destroy the session
         session_destroy();
     }
+    if(!isset($_COOKIE[$cookie_name])) {
+        $_SESSION["user"]=$_COOKIE[$cookie_value];
+    }
     if (isset($_SESSION["user"])) {
         $datos = obtenerdatos($_SESSION["user"]);
+        $cookie_name = "sesion";
+        $cookie_value = $_SESSION["user"];
+        setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
     } else {
     ?>
         <script lang="JavaScript">
