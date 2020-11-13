@@ -40,6 +40,26 @@ if (isset($_SESSION["user"])) {
     if ($datos["Usuario_perfil"] == "admin")
         echo " es administrador de esta estupenda pagina web 😎🤏";
     ?>
+    <button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
     <form action="" method="post">
         <input type="hidden" name="salir" value="1">
         <input type="submit" value="cerrar sesion">
