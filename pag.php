@@ -1,14 +1,24 @@
 <?php
 // Start the session
 session_start();
-
+include("iniciar.php");
+//setcookie("user", "", time() - 3600);
+if(isset($_COOKIE[$cookie_name])) {
+    $_SESSION["user"]=$_COOKIE[$cookie_name];
+}
+if (isset($_SESSION["user"])) {
+    $datos = obtenerdatos($_SESSION["user"]);
+    $cookie_name = "sesion";
+    $cookie_value = $_SESSION["user"];
+    setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
+} 
 ?>
 <!DOCTYPE html>
 <html>
 
 <body>
     <?php
-    include("iniciar.php");
+    
     if (isset($_POST["salir"])) {
         // remove all session variables
         session_unset();
@@ -16,14 +26,9 @@ session_start();
         // destroy the session
         session_destroy();
     }
-    if(!isset($_COOKIE[$cookie_name])) {
-        $_SESSION["user"]=$_COOKIE[$cookie_value];
-    }
+
     if (isset($_SESSION["user"])) {
-        $datos = obtenerdatos($_SESSION["user"]);
-        $cookie_name = "sesion";
-        $cookie_value = $_SESSION["user"];
-        setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
+        $datos = obtenerdatos($_SESSION["user"]); // 86400 = 1 day
     } else {
     ?>
         <script lang="JavaScript">
