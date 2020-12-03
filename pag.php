@@ -11,11 +11,45 @@ if (isset($_SESSION["user"])) {
     $cookie_name = "sesion";
     $cookie_value = $_SESSION["user"];
     setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
-} 
+}
+
 ?>
 <!DOCTYPE html>
 <html>
+<head>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClEN8h3G0rA2mK5Mfp7slx4IJEsMNkhEM&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 30%;
+        width: 30%;
+      }
 
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      let map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -34.397, lng: 150.644 },
+          zoom: 8,
+        });
+      }
+    </script>
+    <title>beti</title>
+</head>
 <body>
     <?php
     
@@ -41,7 +75,7 @@ if (isset($_SESSION["user"])) {
         echo " es administrador de esta estupenda pagina web 😎🤏";
     ?>
     <button onclick="getLocation()">Try It</button>
-
+    
 <p id="demo"></p>
 
 <script>
@@ -69,6 +103,7 @@ function showPosition(position) {
     <input type="file" name="fileToUpload" id="fileToUpload"><br>
     <input type="submit" value="subir" name="aceptar">
     </form>
+    <div id="map"></div>
     <?php
         include("subirfoto.php");
         
@@ -83,6 +118,9 @@ function showPosition(position) {
         }
         echo "<img src='fotosperfil/".$img."' alt='f'>";
     ?>
+    
 </body>
 
 </html>
+
+
