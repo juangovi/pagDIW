@@ -26,8 +26,8 @@ if (isset($_SESSION["user"])) {
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 30%;
-        width: 30%;
+        height: 40%;
+        width: 40%;
       }
 
       /* Optional: Makes the sample page fill the window. */
@@ -40,12 +40,22 @@ if (isset($_SESSION["user"])) {
     </style>
     <script>
       let map;
-
-      function initMap() {
+      if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(initMap);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+      function initMap(position) {
         map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: -34.397, lng: 150.644 },
-          zoom: 8,
+          center: { lat: position.coords.latitude, lng: position.coords.longitude },
+          zoom: 15,
+
         });
+        new google.maps.Marker({
+    position: { lat: position.coords.latitude, lng: position.coords.longitude },
+    map,
+    title: "Hello World!",
+  });
       }
     </script>
     <title>beti</title>
@@ -82,11 +92,7 @@ if (isset($_SESSION["user"])) {
 var x = document.getElementById("demo");
 
 function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
+  
 }
 
 function showPosition(position) {
