@@ -32,12 +32,26 @@ if (isset($_SESSION["user"])) {
 
      
 ?>
+<script>
+  function enviar(){
+    document.formulario1.submit()
+  }
+</script>
 <?php
-include("subirfoto.php");
-$img=obtenerimg($datos["Usuario_nick"]);
-if($img==null||$img==""){
-    $img="default.jpg";
-}
+        include("subirfoto.php");
+        
+        if(isset($_POST["aceptar"])){
+        crearimg($datos["Usuario_nick"]);
+        
+        }
+        $img=obtenerimg($datos["Usuario_nick"]);
+        if($img==null||$img==""){
+            $img="default.jpg";
+        }
+        
+    ?>
+<?php
+
 $antonio=$datos["coordenadas"];
 $prueba=explode(",", $antonio)
 ?>
@@ -56,8 +70,17 @@ $prueba=explode(",", $antonio)
         zoom: 5,
 
       });
-      var icon = {
-    url: "fotosperfil/<?php echo $img;?>", // url
+      <?php
+        $conn=conectar();
+        $sql = "SELECT * FROM usuarios";
+        $result = $conn->query($sql);
+        while($row = $result->fetch_assoc()){
+          $imagen=$row["Usuario_fotografia"];
+          $antonio=$row["coordenadas"];
+          $prueba=explode(",", $antonio)
+          ?>
+           var icon = {
+    url: "fotosperfil/<?php echo $imagen;?>", // url
     scaledSize: new google.maps.Size(30, 30), // scaled size
     origin: new google.maps.Point(0,0), // origin
     anchor: new google.maps.Point(0, 0) // anchor
@@ -68,7 +91,14 @@ $prueba=explode(",", $antonio)
     icon: icon,
     title: "beti",
   });
-    }
+    
+          <?php
+        }
+        
+        
+      ?>
+      }
+      
   </script>
 
   <!-- Required meta tags -->
@@ -136,22 +166,21 @@ $prueba=explode(",", $antonio)
       <div class="col-md-3">
         <!-- cuadro -->
         <div class="card my-3">
-        <form>
+        <form action="pag.php" method="post" name="formulario1" enctype="multipart/form-data" id="formulario">
             <div class="teste divide">
-            <label for="upload" class="thumbnail divide">
-              <img src="fotosperfil/<?php echo $img;?>" class="card-img-top rounded-circle" alt="...">
+            <label for="fileToUpload" class="thumbnail divide">
+              <img src="fotosperfil/<?php echo $img;?>" class="card-img-top img-fluid rounded-circle" alt="...">
               <div class="image-overlay">
               <div class="circle-icon">
                 <i class="fa fa-upload" aria-hidden="true"></i>
               </div>
              </div>
             </label>
-            
-              <input type="file" id="upload" accept="image/png">
-            </div>
+            <input type="hidden" value="subir" name="aceptar">
+            <input type="file" name="fileToUpload" id="fileToUpload" onchange="enviar()">
           </form>
           <div class="card-body">
-            <h5 class="card-title">nombre y apellidos</h5>
+            <h5 class="card-title"><?php echo $datos["Usuario_nick"]; ?></h5>
             <p class="card-text"> direccion: mi casa</p>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.</p>
