@@ -30,7 +30,8 @@ $img=obtenerimg($datos["Usuario_nick"]);
 if($img==null||$img==""){
     $img="default.jpg";
 }
-
+$antonio=$datos["coordenadas"];
+$prueba=explode(",", $antonio)
 ?>
 <!doctype html>
 <html lang="en">
@@ -43,13 +44,20 @@ if($img==null||$img==""){
   <script>
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 36.9169644, lng: -6.078520699999999 },
+        center: { lat: <?php echo $prueba[0];?>, lng: <?php echo $prueba[1];?>},
         zoom: 15,
 
       });
+      var icon = {
+    url: "fotosperfil/<?php echo $img;?>", // url
+    scaledSize: new google.maps.Size(30, 30), // scaled size
+    origin: new google.maps.Point(0,0), // origin
+    anchor: new google.maps.Point(0, 0) // anchor
+};
       new google.maps.Marker({
-    position: { lat: 36.9169644, lng: -6.078520699999999 },
+    position: { lat: <?php echo $prueba[0];?>, lng: <?php echo $prueba[1];?> },
     map,
+    icon: icon,
     title: "beti",
   });
     }
