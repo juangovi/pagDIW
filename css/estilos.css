@@ -1,0 +1,45 @@
+.tarjeta{
+    margin: auto;
+    width: 25%;
+}
+body{
+    background: linear-gradient(140deg, rgb(253, 144, 248),rgb(236, 143, 174));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-overflow: ellipsis;
+}
+.header{
+    background-color: rgb(231, 31, 131);
+}
+.boton{
+    background-color: rgb(231, 31, 131);
+}
+.boton:hover{
+    background-color: rgb(182, 12, 97);
+}
+a{
+    color: pink;
+}
+a:hover{
+    color: rgb(235, 140, 235);
+}
+.drop_perfil{
+    width: 40px;
+    height: 40px;
+    
+}
+.cuerpo{
+    margin: auto;
+    width: 90%;
+}
+img{
+    width: 300px;
+    height: 300px;
+}
+
+
+  /* Optional: Makes the sample page fill the window. */
+  #map {
+    height: 300px;
+    width: 100%;
+  }

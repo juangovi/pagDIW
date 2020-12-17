@@ -27,6 +27,7 @@ session_start();
 						if ($res == 3) {
 							$_SESSION["user"] = $_POST["nick"];
 							$_SESSION["contraseña"] = $_POST["contraseña"];
+							intentos($_POST);
 							
 					?>
 							<script lang="JavaScript">
@@ -53,7 +54,7 @@ session_start();
 
 							</div>
 							<div>
-							<a href="index.php" ">crear cuenta</a>
+							<a href="index.php">crear cuenta</a>
 							<p id="mensaje" style="color: #fa0505; text-align: right; float: right">
 								<?php
 								if (isset($_POST["nick"])) {

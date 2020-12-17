@@ -12,121 +12,141 @@ if (isset($_SESSION["user"])) {
     $cookie_value = $_SESSION["user"];
     setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 }
+if (isset($_SESSION["user"])) {
+    $datos = obtenerdatos($_SESSION["user"]); // 86400 = 1 day
+} else {
+?>
+    <script lang="JavaScript">
+        window.location.href = "login.php";
+    </script>
+<?php
+}
+
+        
+?>
+<?php
+include("subirfoto.php");
+$img=obtenerimg($datos["Usuario_nick"]);
+if($img==null||$img==""){
+    $img="default.jpg";
+}
 
 ?>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClEN8h3G0rA2mK5Mfp7slx4IJEsMNkhEM&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script>
-    <style type="text/css">
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 40%;
-        width: 40%;
-      }
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClEN8h3G0rA2mK5Mfp7slx4IJEsMNkhEM&callback=initMap&libraries=&v=weekly"
+    defer></script>
+  <script>
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 36.9169644, lng: -6.078520699999999 },
+        zoom: 15,
 
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <script>
-      let map;
-      if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(initMap);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-      function initMap(position) {
-        map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: position.coords.latitude, lng: position.coords.longitude },
-          zoom: 15,
-
-        });
-        new google.maps.Marker({
-    position: { lat: position.coords.latitude, lng: position.coords.longitude },
+      });
+      new google.maps.Marker({
+    position: { lat: 36.9169644, lng: -6.078520699999999 },
     map,
-    title: "Hello World!",
+    title: "beti",
   });
-      }
-    </script>
-    <title>beti</title>
+    }
+  </script>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <title>Hello, world!</title>
+  <link rel="stylesheet" href="css/estilos.css" />
 </head>
+
 <body>
-    <?php
-    
-    if (isset($_POST["salir"])) {
-        // remove all session variables
-        session_unset();
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-        // destroy the session
-        session_destroy();
-    }
-
-    if (isset($_SESSION["user"])) {
-        $datos = obtenerdatos($_SESSION["user"]); // 86400 = 1 day
-    } else {
-    ?>
-        <script lang="JavaScript">
-            window.location.href = "login.php";
-        </script>
-    <?php
-    }
-    echo "hola " . $datos["Usuario_nick"];
-    if ($datos["Usuario_perfil"] == "admin")
-        echo " es administrador de esta estupenda pagina web 😎🤏";
-    ?>
-    <button onclick="getLocation()">Try It</button>
-    
-<p id="demo"></p>
-
-<script>
-var x = document.getElementById("demo");
-
-function getLocation() {
-  
-}
-
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
-}
-</script>
-    <form action="" method="post">
-        <input type="hidden" name="salir" value="1">
-        <input type="submit" value="cerrar sesion">
-    </form>
-    <form action="pag.php" method="post" enctype="multipart/form-data">
-     cambiar imagen:
-    <input type="file" name="fileToUpload" id="fileToUpload"><br>
-    <input type="submit" value="subir" name="aceptar">
-    </form>
-    <div id="map"></div>
-    <?php
-        include("subirfoto.php");
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <div class="btn-group">
+        <button type="button" class="border-0 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <img class="img-fluid drop_perfil rounded-circle" src="fotosperfil/<?php echo $img;?>" alt="">
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          
+        </div>
+      </div>
+  </nav>
+  <!-- navbar -->
+  <div class="container-fluid my-5 bg-light rounded cuerpo">
+    <div class="row">
+      <div class="col-md-3">
+        <!-- cuadro -->
+        <div class="card my-3">
+          <img src="fotosperfil/<?php echo $img;?>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">nombre y apellidos</h5>
+            <p class="card-text"> direccion: mi casa</p>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+              content. This content is a little bit longer.</p>
+          </div>
         
-        if(isset($_POST["aceptar"])){
-        
-        crearimg($datos["Usuario_nick"]);
-        
-        }
-        $img=obtenerimg($datos["Usuario_nick"]);
-        if($img==null||$img==""){
-            $img="default.jpg";
-        }
-        echo "<img src='fotosperfil/".$img."' alt='f'>";
-    ?>
-    
+      </div>
+      <!-- cuadro -->
+      <div class="container-fluid my-3" id="map">
+      </div>
+    </div>
+    <div class="col-md-9">
+
+    </div>
+  </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
-
-
