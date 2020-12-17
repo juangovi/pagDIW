@@ -32,10 +32,7 @@ a:hover{
     margin: auto;
     width: 90%;
 }
-img{
-    width: 300px;
-    height: 300px;
-}
+
 
 
   /* Optional: Makes the sample page fill the window. */
@@ -43,3 +40,61 @@ img{
     height: 300px;
     width: 100%;
   }
+  
+
+
+
+.image-overlay {
+  border-radius: 4px;
+  position: absolute;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: black;
+  height:100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  font-size: 50px;
+  text-align: center;
+  line-height: 300px;
+  cursor: pointer;
+  transition: opacity ease 0.5s;
+}
+
+.circle-icon {
+  height:80px;
+  width:80px;
+  border-radius: 50%;
+  background: #eee;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+span{
+    height:80px;
+  width:80px;
+}
+.thumbnail{
+    background: #eee;
+    position: relative;
+    
+  }
+  
+  
+.circle-icon span{
+  position: absolute;
+  margin-left: -22px;
+  margin-top: 10px;
+}
+
+.image-overlay:hover {
+  opacity: 1;
+}
+
+input[type=file]{
+  opacity: 0;
+}
+.divide{
+    height:100%;
+    width: 100%;
+}

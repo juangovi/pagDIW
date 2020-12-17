@@ -4,14 +4,22 @@ session_start();
 include("iniciar.php");
 //setcookie("user", "", time() - 3600);
 if(isset($_COOKIE[$cookie_name])) {
-    $_SESSION["user"]=$_COOKIE[$cookie_name];
+    //$_SESSION["user"]=$_COOKIE[$cookie_name];
 }
+if (isset($_POST["salir"])) {
+  // remove all session variables
+  session_unset();
+
+  // destroy the session
+  session_destroy();
+}  
 if (isset($_SESSION["user"])) {
     $datos = obtenerdatos($_SESSION["user"]);
     $cookie_name = "sesion";
     $cookie_value = $_SESSION["user"];
     setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 }
+
 if (isset($_SESSION["user"])) {
     $datos = obtenerdatos($_SESSION["user"]); // 86400 = 1 day
 } else {
@@ -22,7 +30,7 @@ if (isset($_SESSION["user"])) {
 <?php
 }
 
-        
+     
 ?>
 <?php
 include("subirfoto.php");
@@ -45,7 +53,7 @@ $prueba=explode(",", $antonio)
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: <?php echo $prueba[0];?>, lng: <?php echo $prueba[1];?>},
-        zoom: 15,
+        zoom: 5,
 
       });
       var icon = {
@@ -114,7 +122,11 @@ $prueba=explode(",", $antonio)
           <img class="img-fluid drop_perfil rounded-circle" src="fotosperfil/<?php echo $img;?>" alt="">
         </button>
         <div class="dropdown-menu dropdown-menu-right">
-          
+          <form action="" method="post">
+            <input type="hidden" name="salir" value="1">
+            <input type="submit" class="dropdown-item" value="cerrar sesion">
+        </form>
+        <a href="#" class="dropdown-item" >hola</a>
         </div>
       </div>
   </nav>
@@ -124,12 +136,26 @@ $prueba=explode(",", $antonio)
       <div class="col-md-3">
         <!-- cuadro -->
         <div class="card my-3">
-          <img src="fotosperfil/<?php echo $img;?>" class="card-img-top" alt="...">
+        <form>
+            <div class="teste divide">
+            <label for="upload" class="thumbnail divide">
+              <img src="fotosperfil/<?php echo $img;?>" class="card-img-top rounded-circle" alt="...">
+              <div class="image-overlay">
+              <div class="circle-icon">
+                <i class="fa fa-upload" aria-hidden="true"></i>
+              </div>
+             </div>
+            </label>
+            
+              <input type="file" id="upload" accept="image/png">
+            </div>
+          </form>
           <div class="card-body">
             <h5 class="card-title">nombre y apellidos</h5>
             <p class="card-text"> direccion: mi casa</p>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
               content. This content is a little bit longer.</p>
+              
           </div>
         
       </div>
