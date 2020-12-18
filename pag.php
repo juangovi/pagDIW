@@ -89,7 +89,7 @@ $prueba=explode(",", $antonio)
     position: { lat: <?php echo $prueba[0];?>, lng: <?php echo $prueba[1];?> },
     map,
     icon: icon,
-    title: "beti",
+    title: "<?php echo $row["Usuario_nick"];?>",
   });
     
           <?php
