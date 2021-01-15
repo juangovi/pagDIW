@@ -80,6 +80,10 @@ width:80px;
   
 }
 
+.iten{
+  float: left;
+  height: 500px;
+}
 
 .circle-icon span{
 position: absolute;

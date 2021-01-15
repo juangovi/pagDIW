@@ -178,6 +178,7 @@ $prueba=explode(",", $antonio)
             </label>
             <input type="hidden" value="subir" name="aceptar">
             <input type="file" name="fileToUpload" id="fileToUpload" onchange="enviar()">
+      </div>
           </form>
           <div class="card-body">
             <h5 class="card-title"><?php echo $datos["Usuario_nick"]; ?></h5>
@@ -186,16 +187,88 @@ $prueba=explode(",", $antonio)
               content. This content is a little bit longer.</p>
               
           </div>
-        
       </div>
-      <!-- cuadro -->
-      <div class="container-fluid my-3" id="map">
+      
+        <!-- cuadro -->
+          <div class="container-fluid my-3" id="map">
+          </div>
+      </div>
+      <div class="col-md-9">
+        <div class="container">
+                  <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
+                    <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title titulo">objetos wapo</h5>
+                    </div>
+                    
+                    <div class="card-body">
+                      <a href="#" class="card-link btn btn-danger">comprar</a>
+                      precio:
+                    </div>
+                  </div>
+                  <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
+                    <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title titulo">objetos wapo</h5>
+                    </div>
+                    
+                    <div class="card-body">
+                      <a href="#" class="card-link btn btn-danger">comprar</a>
+                      precio:
+                    </div>
+                  </div>
+                  <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
+                    <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title titulo">objetos wapo</h5>
+                    </div>
+                    
+                    <div class="card-body">
+                      <a href="#" class="card-link btn btn-danger">comprar</a>
+                      precio:
+                    </div>
+                  </div>
+                  <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
+                    <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title titulo">objetos wapo</h5>
+                    </div>
+                    
+                    <div class="card-body">
+                      <a href="#" class="card-link btn btn-danger">comprar</a>
+                      precio:
+                    </div>
+                  </div>
+                  
+                  
+        </div>
+      
+      
       </div>
     </div>
-    <div class="col-md-9">
-
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-9">
+      <nav aria-label="Page navigation example" class="text-center">
+  <ul class="pagination class="text-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+      </div>
     </div>
-  </div>
   </div>
 
 
