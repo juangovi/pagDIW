@@ -100,6 +100,24 @@ $prueba=explode(",", $antonio)
       }
       
   </script>
+  <?php
+  if (isset($_GET["pg"])) {
+    $page = $_GET["pg"];
+  }else{
+    $page = 1;
+  }
+  $conn=conectar();
+  $sql = "SELECT * FROM productos";
+  $result = $conn->query($sql);
+  $totalResultados = mysqli_num_rows($result);
+  $resultadoPorPaginas = 9;
+  $numeroPaginas = ceil($totalResultados / $resultadoPorPaginas);
+  $primeraPagina = ($page - 1) * $resultadoPorPaginas;
+  $sql = "SELECT * FROM productos LIMIT " . $primeraPagina . ',' . $resultadoPorPaginas;
+  $result = $conn->query($sql);
+  
+
+  ?>
 
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -195,10 +213,13 @@ $prueba=explode(",", $antonio)
       </div>
       <div class="col-md-9">
         <div class="container">
+        <?php
+        while ($row = $result->fetch_assoc()) {
+        ?>
                   <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
                     <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title titulo">objetos wapo</h5>
+                      <h5 class="card-title titulo">Zotac GAMING GeForce RTX 3090 Trinity 24GB GDDR6X</h5>
                     </div>
                     
                     <div class="card-body">
@@ -206,41 +227,9 @@ $prueba=explode(",", $antonio)
                       precio:
                     </div>
                   </div>
-                  <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
-                    <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title titulo">objetos wapo</h5>
-                    </div>
-                    
-                    <div class="card-body">
-                      <a href="#" class="card-link btn btn-danger">comprar</a>
-                      precio:
-                    </div>
-                  </div>
-                  <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
-                    <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title titulo">objetos wapo</h5>
-                    </div>
-                    
-                    <div class="card-body">
-                      <a href="#" class="card-link btn btn-danger">comprar</a>
-                      precio:
-                    </div>
-                  </div>
-                  <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
-                    <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title titulo">objetos wapo</h5>
-                    </div>
-                    
-                    <div class="card-body">
-                      <a href="#" class="card-link btn btn-danger">comprar</a>
-                      precio:
-                    </div>
-                  </div>
-                  
-                  
+          <?php
+                }
+         ?>       
         </div>
       
       
@@ -257,9 +246,14 @@ $prueba=explode(",", $antonio)
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <?php
+    for ($page2 = 1; $page2 <= $numeroPaginas; $page2++) {
+      
+     ?>
+    <li class="page-item"><a class="page-link" href="pag.php?pg=<?php echo $page2;?>"><?php echo $page2;?></a></li>
+  <?php
+  }
+     ?>
     <li class="page-item">
       <a class="page-link" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
