@@ -110,7 +110,7 @@ $prueba=explode(",", $antonio)
   $sql = "SELECT * FROM productos";
   $result = $conn->query($sql);
   $totalResultados = mysqli_num_rows($result);
-  $resultadoPorPaginas = 9;
+  $resultadoPorPaginas = 10;
   $numeroPaginas = ceil($totalResultados / $resultadoPorPaginas);
   $primeraPagina = ($page - 1) * $resultadoPorPaginas;
   $sql = "SELECT * FROM productos LIMIT " . $primeraPagina . ',' . $resultadoPorPaginas;
@@ -217,14 +217,14 @@ $prueba=explode(",", $antonio)
         while ($row = $result->fetch_assoc()) {
         ?>
                   <div class="card iten mx-1 my-3 mx-lg-4 my-lg-5" style="width: 18rem; float: left; height: 500px;">
-                    <img src="img/ezviz-c1c-plus-camara-de-seguridad-ip-interior-blanca.jpg" class="card-img-top" alt="...">
+                    <img src="img/<?=$row["foto"]?>" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title titulo">Zotac GAMING GeForce RTX 3090 Trinity 24GB GDDR6X</h5>
+                      <h5 class="card-title titulo"><?=$row["nombre"]?></h5>
                     </div>
                     
                     <div class="card-body">
                       <a href="#" class="card-link btn btn-danger">comprar</a>
-                      precio:
+                      precio:<?=$row["precio"]?>
                     </div>
                   </div>
           <?php
