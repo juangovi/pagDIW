@@ -10,7 +10,7 @@
        $sql = "INSERT INTO  usuarios (Usuario_nick,Usuario_email,Usuario_clave,Usuario_token_aleatorio) 
        VALUES ('$nick','$email','$contraseña','$token')";
        if (mysqli_query($conn, $sql)) {
-       //enviocorreo($email, $token);
+       enviocorreo($email, $token);
         $correcto=1;
        
        }
