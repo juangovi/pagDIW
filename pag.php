@@ -237,8 +237,7 @@ $prueba=explode(",", $antonio)
           <?php
                 }
          ?>
-         <input type="submit" value="enviar">
-         </form>
+         
 
         </div>
       
@@ -249,6 +248,8 @@ $prueba=explode(",", $antonio)
       <div class="col-md-3">
       </div>
       <div class="col-md-9">
+      <input type="submit" value="enviar">
+         </form>
       <nav aria-label="Page navigation example" class="text-center">
   <ul class="pagination class="text-center">
     <li class="page-item">
