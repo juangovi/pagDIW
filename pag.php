@@ -213,6 +213,7 @@ $prueba=explode(",", $antonio)
       </div>
       <div class="col-md-9">
         <div class="container">
+        <form method="POST" action="multisele.php">
         <?php
         while ($row = $result->fetch_assoc()) {
         ?>
@@ -223,19 +224,22 @@ $prueba=explode(",", $antonio)
                     </div>
                     
                     <div class="card-body">
-                      <a href="#" class="card-link btn btn-danger">comprar</a>
-                      precio:<?=$row["precio"]?>
-                      <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="<?=$row["precio"]?>" name="multiselect" id="flexCheck<?=$row["precio"]?>">
+                    <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="<?=$row["id"]?>" name="multiselect" id="flexCheck<?=$row["precio"]?>">
   <label class="form-check-label"  for="flexCheck<?=$row["precio"]?>">
     Seleccionar
   </label>
 </div>
+                      <a href="#" class="card-link btn btn-danger">comprar</a>
+                      precio:<?=$row["precio"]?>
                     </div>
                   </div>
           <?php
                 }
-         ?>       
+         ?>
+         <input type="submit" value="enviar">
+         </form>
+
         </div>
       
       
