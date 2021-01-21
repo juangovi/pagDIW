@@ -110,7 +110,7 @@ $prueba=explode(",", $antonio)
   $sql = "SELECT * FROM productos";
   $result = $conn->query($sql);
   $totalResultados = mysqli_num_rows($result);
-  $resultadoPorPaginas = 10;
+  $resultadoPorPaginas = 12;
   $numeroPaginas = ceil($totalResultados / $resultadoPorPaginas);
   $primeraPagina = ($page - 1) * $resultadoPorPaginas;
   $sql = "SELECT * FROM productos LIMIT " . $primeraPagina . ',' . $resultadoPorPaginas;
@@ -225,8 +225,8 @@ $prueba=explode(",", $antonio)
                     
                     <div class="card-body">
                     <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="<?=$row["id"]?>" name="multiselect" id="flexCheck<?=$row["precio"]?>">
-  <label class="form-check-label"  for="flexCheck<?=$row["precio"]?>">
+  <input class="form-check-input" type="checkbox" value="<?=$row["id"]?>" name="multiselect[]" id="flexCheck<?=$row["id"]?>">
+  <label class="form-check-label"  for="flexCheck<?=$row["id"]?>">
     Seleccionar
   </label>
 </div>
