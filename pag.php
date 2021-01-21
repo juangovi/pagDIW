@@ -225,6 +225,12 @@ $prueba=explode(",", $antonio)
                     <div class="card-body">
                       <a href="#" class="card-link btn btn-danger">comprar</a>
                       precio:<?=$row["precio"]?>
+                      <div class="form-check">
+  <input class="form-check-input" type="checkbox" value="<?=$row["precio"]?>" name="multiselect" id="flexCheck<?=$row["precio"]?>">
+  <label class="form-check-label"  for="flexCheck<?=$row["precio"]?>">
+    Seleccionar
+  </label>
+</div>
                     </div>
                   </div>
           <?php
