@@ -210,7 +210,7 @@ $prueba = explode(",", $antonio)
         </div>
       </div>
       <div class="col-md-9">
-        hola
+      <button id="todo" onclick="select()">selecionar todo</button>
         <div class="container">
           <form method="POST" action="multisele.php">
             <?php
@@ -224,7 +224,7 @@ $prueba = explode(",", $antonio)
 
                 <div class="card-body">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="<?= $row["id"] ?>" name="multiselect[]" id="flexCheck<?= $row["id"] ?>">
+                    <input class="form-check-input che" type="checkbox" value="<?= $row["id"] ?>" name="multiselect[]" id="flexCheck<?= $row["id"] ?>">
                     <label class="form-check-label" for="flexCheck<?= $row["id"] ?>">
                       Seleccionar
                     </label>
@@ -247,8 +247,31 @@ $prueba = explode(",", $antonio)
       <div class="col-md-3">
       </div>
       <div class="col-md-9">
+      
         <input type="submit" value="enviar">
         </form>
+        
+        
+        <script>
+        let chec=true;
+        function select(){
+          if(chec){
+            document.getElementById("todo").innerHTML="deseleccionar todo";
+            chec=false;
+            var checkboxs=document.getElementsByClassName("che");
+            for (let index = 0; index < checkboxs.length; index++) {
+              checkboxs[index].checked=true; 
+            }
+         }else{
+          chec=true;
+          document.getElementById("todo").innerHTML="selecionar todo";
+            var checkboxs=document.getElementsByClassName("che");
+            for (let index = 0; index < checkboxs.length; index++) {
+              checkboxs[index].checked=false; 
+            }
+         }
+        }
+        </script>
         <nav aria-label="Page navigation example" class="text-center">
           <ul class="pagination class=" text-center">
             <li class="page-item">
