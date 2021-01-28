@@ -115,7 +115,20 @@ $prueba = explode(",", $antonio)
   $resultadoPorPaginas = 12;
   $numeroPaginas = ceil($totalResultados / $resultadoPorPaginas);
   $primeraPagina = ($page - 1) * $resultadoPorPaginas;
-  $sql = "SELECT * FROM productos LIMIT " . $primeraPagina . ',' . $resultadoPorPaginas;
+  $clauses = array();
+  if (isset($_POST["categoria"])&&$_POST["categoria"]!="") {
+    $clauses[] = 'categoria = "'.$_POST["categoria"].'"';
+  }
+  if (isset($_POST["precio"])&&$_POST["precio"]!="") {
+    $clauses[] = 'precio < "'.$_POST["precio"].'"';
+  }
+  $sql = "SELECT * FROM productos";
+  if ( count($clauses) > 0 ) {
+    $sql .= ' WHERE '.implode(' AND ', $clauses);
+}else{
+  $sql .= " LIMIT " . $primeraPagina . ',' . $resultadoPorPaginas;
+}
+  echo $sql;
   $result = $conn->query($sql);
 
 
@@ -199,8 +212,28 @@ $prueba = explode(",", $antonio)
           <div class="card-body">
             <h5 class="card-title"><?php echo $datos["Usuario_nick"]; ?></h5>
             <p class="card-text"> direccion: mi casa</p>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
+            <form action="" method="post">
+              filtros
+              <select name="categoria" class="form-select" aria-label="Default select example">
+                <option value="" selected>categoria</option>
+                <option value="1">fuentes de alimentacion</option>
+                <option value="2">placa madre</option>
+                <option value="3">procesadores</option>
+                <option value="4">targetas graficas</option>
+                <option value="5">targetas RAM</option>
+                <option value="6">perifericos</option>
+                <option value="7">otros</option>
+              </select><br>
+              <select name="precio" class="form-select" aria-label="Default select example">
+                <option value="" selected>precio</option>
+                <option value="100">-100</option>
+                <option value="200">-200</option>
+                <option value="300">-300</option>
+                <option value="400">-400</option>
+                <option value="500">-500</option>
+              </select><br>
+              <input type="submit" value="enviar"/>
+            </form>
 
           </div>
         </div>
@@ -210,7 +243,7 @@ $prueba = explode(",", $antonio)
         </div>
       </div>
       <div class="col-md-9">
-      <button id="todo" onclick="select()">selecionar todo</button>
+        <button id="todo" onclick="select()">selecionar todo</button>
         <div class="container">
           <form method="POST" action="multisele.php">
             <?php
@@ -247,30 +280,31 @@ $prueba = explode(",", $antonio)
       <div class="col-md-3">
       </div>
       <div class="col-md-9">
-      
+
         <input type="submit" value="enviar">
         </form>
-        
-        
+
+
         <script>
-        let chec=true;
-        function select(){
-          if(chec){
-            document.getElementById("todo").innerHTML="deseleccionar todo";
-            chec=false;
-            var checkboxs=document.getElementsByClassName("che");
-            for (let index = 0; index < checkboxs.length; index++) {
-              checkboxs[index].checked=true; 
+          let chec = true;
+
+          function select() {
+            if (chec) {
+              document.getElementById("todo").innerHTML = "deseleccionar todo";
+              chec = false;
+              var checkboxs = document.getElementsByClassName("che");
+              for (let index = 0; index < checkboxs.length; index++) {
+                checkboxs[index].checked = true;
+              }
+            } else {
+              chec = true;
+              document.getElementById("todo").innerHTML = "selecionar todo";
+              var checkboxs = document.getElementsByClassName("che");
+              for (let index = 0; index < checkboxs.length; index++) {
+                checkboxs[index].checked = false;
+              }
             }
-         }else{
-          chec=true;
-          document.getElementById("todo").innerHTML="selecionar todo";
-            var checkboxs=document.getElementsByClassName("che");
-            for (let index = 0; index < checkboxs.length; index++) {
-              checkboxs[index].checked=false; 
-            }
-         }
-        }
+          }
         </script>
         <nav aria-label="Page navigation example" class="text-center">
           <ul class="pagination class=" text-center">
