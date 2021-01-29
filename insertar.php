@@ -34,7 +34,7 @@ $mensage="
 </head>
 <body>
 <h1>bienvenido a mi pagina
-<a class='w3-button w3-black' href='http://juanantonio.dx.am/verificacion.php?tk=".$token."'>Link Button</a></h1>
+<a class='w3-button w3-black' href='https://juanantoniogovi.educationhost.cloud/verificacion.php?tk=".$token."'>varificar</a></h1>
 </body>
 </html>";
 
