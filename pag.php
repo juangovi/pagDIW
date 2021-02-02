@@ -116,18 +116,18 @@ $prueba = explode(",", $antonio)
   $numeroPaginas = ceil($totalResultados / $resultadoPorPaginas);
   $primeraPagina = ($page - 1) * $resultadoPorPaginas;
   $clauses = array();
-  if (isset($_POST["categoria"])&&$_POST["categoria"]!="") {
-    $clauses[] = 'categoria = "'.$_POST["categoria"].'"';
+  if (isset($_POST["categoria"]) && $_POST["categoria"] != "") {
+    $clauses[] = 'categoria = "' . $_POST["categoria"] . '"';
   }
-  if (isset($_POST["precio"])&&$_POST["precio"]!="") {
-    $clauses[] = 'precio < "'.$_POST["precio"].'"';
+  if (isset($_POST["precio"]) && $_POST["precio"] != "") {
+    $clauses[] = 'precio < "' . $_POST["precio"] . '"';
   }
   $sql = "SELECT * FROM productos";
-  if ( count($clauses) > 0 ) {
-    $sql .= ' WHERE '.implode(' AND ', $clauses);
-}else{
-  $sql .= " LIMIT " . $primeraPagina . ',' . $resultadoPorPaginas;
-}
+  if (count($clauses) > 0) {
+    $sql .= ' WHERE ' . implode(' AND ', $clauses);
+  } else {
+    $sql .= " LIMIT " . $primeraPagina . ',' . $resultadoPorPaginas;
+  }
   echo $sql;
   $result = $conn->query($sql);
 
@@ -232,7 +232,7 @@ $prueba = explode(",", $antonio)
                 <option value="400">-400</option>
                 <option value="500">-500</option>
               </select><br>
-              <input type="submit" value="enviar"/>
+              <input type="submit" value="enviar" />
             </form>
 
           </div>
