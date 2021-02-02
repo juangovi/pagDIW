@@ -128,7 +128,7 @@ $prueba = explode(",", $antonio)
   } else {
     $sql .= " LIMIT " . $primeraPagina . ',' . $resultadoPorPaginas;
   }
-  echo $sql;
+  
   $result = $conn->query($sql);
 
 
